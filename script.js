@@ -11,9 +11,11 @@ backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 's
 // Mobile menu
 document.getElementById('hamburger').addEventListener('click', () => {
   document.getElementById('navLinks').classList.toggle('mobile-open');
+  document.querySelector('.nav-cta').classList.toggle('mobile-open');
 });
-document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+document.querySelectorAll('.nav-links a, .nav-cta a').forEach(a => a.addEventListener('click', () => {
   document.getElementById('navLinks').classList.remove('mobile-open');
+  document.querySelector('.nav-cta').classList.remove('mobile-open');
 }));
 
 // Active nav link on scroll
@@ -33,7 +35,7 @@ document.querySelectorAll('.product-filter').forEach(btn => {
     btn.classList.add('active');
     const f = btn.dataset.filter;
     document.querySelectorAll('.product-card').forEach(card => {
-      if (f === 'all' || card.dataset.category === f) { card.style.display = ''; card.style.animation = 'fadeInUp .5s ease'; }
+      if (f === 'all' || card.dataset.category.split(' ').includes(f)) { card.style.display = ''; card.style.animation = 'fadeInUp .5s ease'; }
       else card.style.display = 'none';
     });
   });
