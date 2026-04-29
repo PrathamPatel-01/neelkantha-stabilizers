@@ -27,7 +27,3 @@ A high-performance, responsive landing page built for **Neelkantha Stabilizers**
 * `styles.css` - Custom styling, animations, and responsive breakpoints.
 * `script.js` - UI logic, product filtering, and view switching.
 * `/images` - Product assets and company branding.
-
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/yourusername/neelkantha-stabilizers.git](https://github.com/yourusername/neelkantha-stabilizers.git)
