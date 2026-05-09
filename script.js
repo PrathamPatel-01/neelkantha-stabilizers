@@ -8,15 +8,32 @@ window.addEventListener('scroll', () => {
 });
 backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-// Mobile menu
+// Navigation and View toggling
+const homeView = document.getElementById('home-view');
+const pdView = document.getElementById('product-detail-view');
+
+const showHomeView = () => {
+  if (pdView.style.display === 'block') {
+    pdView.style.display = 'none';
+    homeView.style.display = 'block';
+    window.dispatchEvent(new Event('scroll'));
+  }
+};
+
+// Mobile menu toggle
 document.getElementById('hamburger').addEventListener('click', () => {
   document.getElementById('navLinks').classList.toggle('mobile-open');
   document.querySelector('.nav-cta').classList.toggle('mobile-open');
 });
-document.querySelectorAll('.nav-links a, .nav-cta a').forEach(a => a.addEventListener('click', () => {
-  document.getElementById('navLinks').classList.remove('mobile-open');
-  document.querySelector('.nav-cta').classList.remove('mobile-open');
-}));
+
+// Handle all nav and footer links to ensure they return to home view if needed
+document.querySelectorAll('.nav-links a, .nav-cta a, .nav-logo, .footer-links a, .footer-brand a, .pd-breadcrumb a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('mobile-open');
+    document.querySelector('.nav-cta').classList.remove('mobile-open');
+    showHomeView();
+  });
+});
 
 // Active nav link on scroll
 const sections = document.querySelectorAll('section[id]');
