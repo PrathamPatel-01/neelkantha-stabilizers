@@ -94,7 +94,7 @@ document.querySelectorAll('.product-card').forEach(card => {
       if(text.includes(':')) {
         const parts = text.split(':');
         key = parts[0].trim();
-        val = parts[1].trim();
+        val = parts.slice(1).join(':').trim();
       } else {
         // For simple ones like "50 KVA" or "Three Phase" that don't have colons but are specs
         // We can parse based on content, or just show them
